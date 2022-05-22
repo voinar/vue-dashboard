@@ -1,6 +1,7 @@
 <template>
   <v-container fluid class="blue lighten-4 ml-6">
 	<v-layout row wrap>
+
 	<!-- user cards  -->
 		<v-flex xs12 sm6 md4 lg3 v-for="(item, index) in workerList" :key="item">
 		<v-card :loading="loading" height="auto" class="ma-4 pa-3" elevation="5">
@@ -9,6 +10,8 @@
 					<v-col>
 						<v-row class="mb-2">
 							<v-spacer></v-spacer>
+
+							<!-- card top drop down button -->
 								<v-menu
 									offset-y
 									bottom
@@ -24,14 +27,17 @@
 										<v-icon>mdi-menu</v-icon>
 										</v-btn>
 									</template>
-
+									
 									<v-list>
+										<!-- user status toggle -->
 										<template v-if="workerList[index].isActive == true">
 										<v-list-item @click="workerList[index].isActive = false">Deactivate</v-list-item>
 										</template>
 										<template v-if="workerList[index].isActive == false">
 										<v-list-item @click="workerList[index].isActive = true">Activate</v-list-item>
 										</template>
+
+										<!-- delete user entry -->
 										<v-list-item @click="workerList.splice(index,1)">Delete user</v-list-item>
 									</v-list>
 								</v-menu>
@@ -40,6 +46,8 @@
 				
 				</v-col>
 				<v-row>
+
+					<!-- user avatar -->
 					<v-row>
 					<v-avatar size="120" class="blue ml-7">
 						<v-img
@@ -49,6 +57,8 @@
 						></v-img>
 					</v-avatar>
 						<v-col class="ml-4" style="opacity: .9">
+
+							<!-- user status -->
 							<v-row class="align-center">
 								<template v-if="workerList[index].isActive == true"><v-icon color="green">
 									mdi-account-check
@@ -62,24 +72,32 @@
 									{{workerList[index].isActive ? "active" : "inactive"}}
 								</p>
 							</v-row>
+
+							<!-- registration date -->
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-calendar-plus</v-icon>
 								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
 									{{workerList[index].registered.slice(0,10)}}
 								</p>
 							</v-row>
+
+							<!-- registration time -->
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-calendar-clock</v-icon>
 								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
 									{{workerList[index].registered.slice(11,19)}}
 								</p>
 							</v-row>
+
+							<!-- nationality -->
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-flag</v-icon>
 								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
 								{{workerList[index].nationality}}
 								</p>
 							</v-row>
+
+							<!-- gender -->
 							<v-row class="align-center">
 									<template v-if="workerList[index].gender == 'male'">
 									<v-icon color="indigo">mdi-gender-male</v-icon>
@@ -96,25 +114,35 @@
 					</v-row>
 				</v-row>
 				<v-row>
+
+					<!-- user name & surname -->
 					<v-card-title class="mt-3">
 						<h2 class="indigo--text">{{workerList[index].name.first}} {{workerList[index].name.last}}</h2>
 
 					</v-card-title>
 				</v-row>
 				<v-col class="pa-5 ml-0">
+
+					<!-- user email -->
 					<v-row>
 						<v-icon color="indigo lighten-1" left>mdi-email</v-icon>
 						<span class="indigo--text">{{workerList[index].email}}</span>
 					</v-row>
+
+					<!-- user phone no. -->
 					<v-row>
 						<v-icon color="indigo lighten-1" left>mdi-phone</v-icon>
 						<span class="indigo--text">{{workerList[index].phone}}</span>
 					</v-row>
+
+					<!-- user cellphone no. -->
 					<v-row>
 						<v-icon color="indigo lighten-1" left>mdi-cellphone</v-icon>
 						<span class="indigo--text">{{workerList[index].cell}}</span>
 					</v-row>
 				</v-col>
+
+				<!-- user address section -->
 				<v-col class="blue lighten-5 pa-5 mt-6 rounded-lg">
 					<v-row>
 						<v-icon color="indigo lighten-1" left>mdi-map-marker-radius</v-icon>
@@ -142,14 +170,17 @@
 						<span class="indigo--text"><b>Country: </b>{{workerList[index].location.country}}</span>
 						</v-row>
 					</div>
+
+					<!-- map button -->
 					<v-btn color="blue lighten-2" dark style="margin-left: -8px"
 						:href="`https://www.google.com/maps/@${workerList[index].location.coordinates.latitude},${workerList[index].location.coordinates.longitude},8z`"
 						target="_blank">
-					<span>Map</span>
+					<span>View on map</span>
 					</v-btn>
 				</v-col>
 
 				<v-card-actions class="pl-3 pt-5 pb-5 mt-8">
+					<!-- message drop down menu -->
 					<v-menu 
 						offset-y
 						bottom
@@ -179,42 +210,25 @@
 						</v-list-item>
 						</v-list>
 						</v-menu>
+
+					<!-- call button -->
 					<v-btn color="blue darken-2" dark class="ml-2">Call</v-btn>
 				</v-card-actions>
 			</v-container>
 		</v-card>
 		</v-flex>
 
-	<!-- add user card -->
+	<!-- add new user card (placeholder/non-functional) -->
 		<v-flex xs12 sm6 md4 lg3>
 		<v-card :loading="loading" height="auto" class="ma-4 pa-3" elevation="5">
 			<v-container>
 				<v-col>
-					<v-col>
-						<v-row class="mb-2">
-							<v-spacer></v-spacer>
-
-								<v-menu
-									offset-y
-									bottom
-									:close-on-click="closeOnClick"
-								>
-								<v-list>
-									<template v-if="workerList[0].isActive == true">
-									<v-list-item @click="workerList[0].isActive = false">Deactivate</v-list-item>
-									</template>
-									<template v-if="workerList[0].isActive == false">
-									<v-list-item @click="workerList[0].isActive = true">Activate</v-list-item>
-									</template>
-									<v-list-item @click="workerList.splice(0,1)">Delete user</v-list-item>
-									</v-list>
-								</v-menu>
-						</v-row>
-					</v-col>
-				
+					<v-row class="mt-14"></v-row>
 				</v-col>
 				<v-row>
 					<v-row>
+
+					<!-- upload picture section -->
 					<v-avatar size="120" class="blue ml-7">
 						<v-img
 						:src="workerList[0].picture.medium"
@@ -222,7 +236,8 @@
 						contain
 						></v-img>
 					</v-avatar>
-						<v-col class="ml-4" style="opacity: .9">
+						<v-col class="ml-4">
+							<!-- select user status -->
 							<v-row class="align-center">
 								<v-icon color="indigo">
 									mdi-account-question-outline
@@ -235,24 +250,32 @@
 									</select>
 								</p>
 							</v-row>
+
+							<!-- enter registration date -->
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-calendar-plus</v-icon>
 								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
 									_______
 								</p>
 							</v-row>
+
+							<!-- enter registration time -->
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-calendar-clock</v-icon>
 								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
 									_______
 								</p>
 							</v-row>
+
+							<!-- select nationality -->
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-flag</v-icon>
 								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
 								select nationality
 								</p>
 							</v-row>
+
+							<!-- select gender -->
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-gender-male-female</v-icon>
 								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
@@ -262,25 +285,35 @@
 					</v-row>
 				</v-row>
 				<v-row>
+
+					<!-- enter user name & surname -->
 					<v-card-title class="mt-3">
 						<span class="indigo--text"><input v-model="addUserName" placeholder="enter name"></span>
 						<span class="indigo--text"><input v-model="addUserSurname" placeholder="enter surname"></span>
 					</v-card-title>
 				</v-row>
 				<v-col class="pa-5 ml-0">
+
+					<!-- neter user email -->
 					<v-row>
 						<v-icon color="indigo" left>mdi-email</v-icon>
 						<span class="indigo--text"><input v-model="addUserEmail" placeholder="enter email"></span>
 					</v-row>
+
+					<!-- enter phone number -->
 					<v-row>
 						<v-icon color="indigo" left>mdi-phone</v-icon>
 						<span class="indigo--text"><input v-model="addUserPhone" placeholder="enter phone"></span>
 					</v-row>
+
+					<!-- enter cellphone number -->
 					<v-row>
 						<v-icon color="indigo" left>mdi-cellphone</v-icon>
 						<span class="indigo--text"><input v-model="addUserCell" placeholder="enter mobile phone"></span>
 					</v-row>
 				</v-col>
+
+				<!-- location section -->
 				<v-col class="blue lighten-5 pa-5 mt-6 rounded-lg">
 					<v-row>
 						<v-icon color="indigo lighten-1" left>mdi-map-marker-radius</v-icon>
@@ -306,6 +339,7 @@
 				</v-col>
 
 				<v-card-actions class="pl-3 pt-5 pb-5 mt-8">
+					<!-- append to database button -->
 					<v-btn
 						color="indigo accent-4"
 						dark
@@ -319,6 +353,8 @@
 	</v-layout>
   </v-container>
 </template>
+
+
 
 <script>
   export default {
@@ -657,6 +693,8 @@
       ],
   }
 </script>
+
+
 
 <!-- <style scoped>
 	div {
