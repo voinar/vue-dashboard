@@ -100,9 +100,3 @@ export default {
 };
 </script>
 
-<style>
-	.v-main__wrap {
-    background: #BBDEFB;
-    padding: 0 6rem;
-	};
-</style>

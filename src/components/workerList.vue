@@ -695,9 +695,9 @@
 </script>
 
 
-
-<!-- <style scoped>
-	div {
-		border: 1px solid violet;
-	};
-</style> -->
+<style>
+	.v-main__wrap {
+    background: #BBDEFB;
+    padding: 2rem;
+	}
+</style>
