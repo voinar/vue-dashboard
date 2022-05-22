@@ -105,8 +105,4 @@ export default {
     background: #BBDEFB;
     padding: 0 6rem;
 	};
-
-  div {
-		border: 1px solid red;
-	};
 </style>

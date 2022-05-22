@@ -269,15 +269,15 @@
 				</v-row>
 				<v-col class="pa-5 ml-0">
 					<v-row>
-						<v-icon color="grey" left>mdi-email</v-icon>
+						<v-icon color="indigo" left>mdi-email</v-icon>
 						<span class="indigo--text"><input v-model="addUserEmail" placeholder="enter email"></span>
 					</v-row>
 					<v-row>
-						<v-icon color="grey" left>mdi-phone</v-icon>
+						<v-icon color="indigo" left>mdi-phone</v-icon>
 						<span class="indigo--text"><input v-model="addUserPhone" placeholder="enter phone"></span>
 					</v-row>
 					<v-row>
-						<v-icon color="grey" left>mdi-cellphone</v-icon>
+						<v-icon color="indigo" left>mdi-cellphone</v-icon>
 						<span class="indigo--text"><input v-model="addUserCell" placeholder="enter mobile phone"></span>
 					</v-row>
 				</v-col>
@@ -660,6 +660,6 @@
 
 <!-- <style scoped>
 	div {
-		border: 1px solid red;
+		border: 1px solid violet;
 	};
 </style> -->

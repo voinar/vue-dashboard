@@ -1,4 +1,4 @@
-# vue-task
+# workers-list
 
 ## Project setup
 ```
