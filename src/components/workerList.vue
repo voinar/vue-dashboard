@@ -1,6 +1,7 @@
 <template>
-  <v-container fluid class="blue lighten-4 ml-6" style="width: 96vw">
+  <v-container fluid class="blue lighten-4 ml-6">
 	<v-layout row wrap>
+	<!-- user cards  -->
 		<v-flex xs12 sm6 md4 lg3 v-for="(item, index) in workerList" :key="item">
 		<v-card :loading="loading" height="auto" class="ma-4 pa-3" elevation="5">
 			<v-container>
@@ -122,7 +123,11 @@
 
 					<div class="mt-5 mb-6 ml-1">
 					<v-row>
-						<span class="indigo--text"><b>Street: </b>{{workerList[index].location.street.number}} {{workerList[index].location.street.name}}</span>
+						<span class="indigo--text">
+							<b>Street: </b>
+							{{workerList[index].location.street.number}} 
+							{{workerList[index].location.street.name}}
+						</span>
 					</v-row>
 					<v-row>
 						<span class="indigo--text"><b>State: </b>{{workerList[index].location.state}}</span>
@@ -144,7 +149,7 @@
 					</v-btn>
 				</v-col>
 
-				<v-card-actions class="pl-3 pt-5 pb-5 mt-8" style="border-radius: 8px;">
+				<v-card-actions class="pl-3 pt-5 pb-5 mt-8">
 					<v-menu 
 						offset-y
 						bottom
@@ -180,9 +185,9 @@
 		</v-card>
 		</v-flex>
 
-	<!-- add user -->
+	<!-- add user card -->
 		<v-flex xs12 sm6 md4 lg3>
-		<v-card :loading="loading" height="auto" class="ma-4 pa-3" elevation="5" style="outline: 2px solid grey;">
+		<v-card :loading="loading" height="auto" class="ma-4 pa-3" elevation="5">
 			<v-container>
 				<v-col>
 					<v-col>
@@ -244,14 +249,14 @@
 							</v-row>
 							<v-row class="align-center">
 								<v-icon color="indigo">mdi-flag</v-icon>
-								<p class="grey--text text-subtitle-2 ml-1 mb-0">
+								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
 								select nationality
 								</p>
 							</v-row>
 							<v-row class="align-center">
-									<v-icon color="indigo">mdi-gender-male-female</v-icon>
-									<p class="grey--text text-subtitle-2 ml-1 mb-0">
-									select gender</p>
+								<v-icon color="indigo">mdi-gender-male-female</v-icon>
+								<p class="indigo--text text-subtitle-2 ml-1 mb-0">
+								select gender</p>
 							</v-row>
 						</v-col>
 					</v-row>
@@ -276,7 +281,7 @@
 						<span class="indigo--text"><input v-model="addUserCell" placeholder="enter mobile phone"></span>
 					</v-row>
 				</v-col>
-				<v-col class="grey lighten-3 pa-5 mt-6 rounded-lg">
+				<v-col class="blue lighten-5 pa-5 mt-6 rounded-lg">
 					<v-row>
 						<v-icon color="indigo lighten-1" left>mdi-map-marker-radius</v-icon>
 						<span class="indigo--text"><b>Location</b></span>
@@ -300,7 +305,7 @@
 					</div>
 				</v-col>
 
-				<v-card-actions class="pl-3 pt-5 pb-5 mt-8" style="border-radius: 8px;">
+				<v-card-actions class="pl-3 pt-5 pb-5 mt-8">
 					<v-btn
 						color="indigo accent-4"
 						dark

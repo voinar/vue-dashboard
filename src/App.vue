@@ -3,8 +3,10 @@
     <v-app-bar
       app
       dark
+      fixed
       clipped-left
-      src="https://images.unsplash.com/photo-1618004912476-29818d81ae2e?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1528"
+      src="./assets/nav-background.jpg"
+      style="z-index: 10;"
     >
       <div>
         <v-img
@@ -44,12 +46,14 @@
     </v-app-bar>
     
     <v-navigation-drawer
-      absolute
+      clipped-left
+      fixed
       dark
-      src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548"
+      src="./assets/sidebar-background.jpg"
       expand-on-hover
       permanent
       class="mt-14"
+      style="z-index: 9;"
     >
       <v-list>
         <v-list-item
@@ -68,23 +72,19 @@
       </v-list>
     </v-navigation-drawer>
 
-
     <v-main>
-      <!-- <HelloWorld/> -->
       <workerList/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
 import workerList from './components/workerList';
 
 export default {
   name: 'App',
 
   components: {
-    // HelloWorld,
     workerList
   },
 
