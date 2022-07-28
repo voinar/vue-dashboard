@@ -1,26 +1,3 @@
-see live: https://vue-task-a8c415.netlify.app/
+# A simple dashboard view made from scratch in Vue.js & Vuetify
 
-# vue-task
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# See live: https://vue-task-a8c415.netlify.app/
